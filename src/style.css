@@ -244,6 +244,7 @@ em.coral {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: var(--bg);
 }
 
 .hero-video-layer {
@@ -767,6 +768,7 @@ section:not(#hero):not(.waitlist-section) {
   overflow: hidden;
   border-top: 0.5px solid var(--b1);
   padding: 0;
+  background-color: var(--bg);
 }
 
 .waitlist-bg-video {

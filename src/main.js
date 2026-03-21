@@ -247,17 +247,66 @@ function initDemoVideo() {
 
 // ── VIDEO AUTOPLAY FALLBACK ───────────────────────────────
 function initVideos() {
-  document.querySelectorAll('video').forEach((v) => {
-    v.play().catch(() => {
-      v.muted = true;
-      v.play().catch(() => {});
+  document.querySelectorAll('video')
+    .forEach(video => {
+      video.muted = true;
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          video.addEventListener(
+            'canplay',
+            () => video.play(),
+            { once: true }
+          );
+        });
+      }
     });
-  });
+}
+
+function initLazyVideos() {
+  const lazy = document.querySelectorAll(
+    'video[preload="none"]'
+  );
+  if (!lazy.length) return;
+
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const v = entry.target;
+        v.preload = 'auto';
+        v.load();
+        v.play().catch(() => {
+          v.muted = true;
+          v.play().catch(() => {});
+        });
+        obs.unobserve(v);
+      });
+    },
+    { rootMargin: '800px' }
+  );
+
+  lazy.forEach(v => obs.observe(v));
+}
+
+function initVisibility() {
+  document.addEventListener(
+    'visibilitychange', () => {
+      document.querySelectorAll('video')
+        .forEach(v => {
+          document.hidden
+            ? v.pause()
+            : v.play().catch(() => {});
+        });
+    }
+  );
 }
 
 // ── INITIALISE ALL ────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initVideos();
+  initLazyVideos();
+  initVisibility();
   initFeatureRows();
   initScrollAnimations();
   initCountUp();
