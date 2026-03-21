@@ -21,7 +21,7 @@
  * View at: https://docs.google.com/spreadsheets/d/1R9a0whBzxOtPz63hd9cDaVlsbnvYqDHia2DhQmRW0dI
  */
 
-const SHEET_URL = import.meta.env.VITE_SHEET_URL;
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzJqsDa5frwad2AcCLGbvvaGJ6soTfkfb3UQTZrtyaPKDmwhE5ZJqe3DzJIKaGzNqJL/exec';
 
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
