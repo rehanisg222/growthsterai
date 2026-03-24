@@ -393,37 +393,6 @@ section:not(#hero):not(.waitlist-section) {
   line-height: 1.65;
 }
 
-/* ═══════════════════════════════════════════════════════════ */
-/* THE PLATFORM — PRODUCT DEMO PLACEHOLDER                    */
-/* ═══════════════════════════════════════════════════════════ */
-.prod-frame {
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: 4 / 3;
-  background: var(--s1);
-  border: 0.5px solid var(--b1);
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.prod-frame-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-
-.demo-placeholder-title {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 17px;
-  color: var(--t3);
-  font-weight: 300;
-}
 
 /* ═══════════════════════════════════════════════════════════ */
 /* PRODUCT SHOWCASE SECTION                                   */
@@ -692,46 +661,6 @@ section:not(#hero):not(.waitlist-section) {
   object-position: center center;
 }
 
-/* ═══════════════════════════════════════════════════════════ */
-/* BY THE NUMBERS                                             */
-/* ═══════════════════════════════════════════════════════════ */
-.nums {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 0.5px solid var(--b1);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.num {
-  padding: 40px 28px;
-  text-align: center;
-  border-right: 0.5px solid var(--b1);
-}
-
-.num:last-child {
-  border-right: none;
-}
-
-.num-v {
-  font-family: var(--serif);
-  font-size: 60px;
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--t1);
-  margin-bottom: 10px;
-}
-
-
-
-.num-l {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.10em;
-  color: var(--t3);
-}
 
 /* ═══════════════════════════════════════════════════════════ */
 /* WAITLIST SECTION                                           */

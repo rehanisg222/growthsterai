@@ -96,62 +96,6 @@ function initScrollAnimations() {
   els.forEach((el) => observer.observe(el));
 }
 
-// ── NUMBER COUNT-UP ANIMATION ─────────────────────────────
-function initCountUp() {
-  const countEls = document.querySelectorAll('[data-animate="count"]');
-  if (!countEls.length) return;
-
-  const parseTarget = (target) => {
-    // Extract prefix (e.g. "$"), numeric part, suffix (e.g. "M", "%", "+")
-    const prefix      = target.match(/^[^0-9]*/)?.[0] ?? '';
-    const rawDigits   = target.replace(/[^0-9.]/g, '');
-    const numericPart = parseFloat(rawDigits) || 0;
-    const suffix      = target.match(/[^0-9.]*$/)?.[0] ?? '';
-    const isFloat     = rawDigits.includes('.');
-    return { prefix, numericPart, suffix, isFloat };
-  };
-
-  const formatCount = (n, isFloat) => {
-    if (isFloat) return n.toFixed(1);
-    if (n >= 1000) return Math.round(n).toLocaleString('en-US');
-    return Math.round(n).toString();
-  };
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.classList.add('is-visible');
-        observer.unobserve(el);
-
-        const rawTarget = el.dataset.countTarget;
-        if (!rawTarget) return;
-
-        const { prefix, numericPart, suffix, isFloat } = parseTarget(rawTarget);
-        const countEl = el.querySelector('.count-number');
-        if (!countEl) return;
-
-        const duration = 1800;
-        const start    = performance.now();
-
-        const tick = (now) => {
-          const elapsed  = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
-          const eased    = 1 - Math.pow(1 - progress, 3);
-          countEl.textContent = prefix + formatCount(numericPart * eased, isFloat) + suffix;
-          if (progress < 1) requestAnimationFrame(tick);
-        };
-
-        requestAnimationFrame(tick);
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  countEls.forEach((el) => observer.observe(el));
-}
 
 // ── NAV SCROLL BEHAVIOUR ──────────────────────────────────
 function initNavScroll() {
@@ -230,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageFadeIn();
   initFeatureRows();
   initScrollAnimations();
-  initCountUp();
   initNavScroll();
   initActiveNav();
   initSmoothScroll();
