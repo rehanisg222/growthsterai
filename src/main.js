@@ -199,21 +199,6 @@ function initActiveNav() {
   sections.forEach((s) => observer.observe(s));
 }
 
-// ── HERO PARALLAX ─────────────────────────────────────────
-function initHeroParallax() {
-  const heroVideo = document.getElementById('hero-video');
-  if (!heroVideo) return;
-
-  const update = () => {
-    const scrolled = window.scrollY;
-    if (scrolled < window.innerHeight) {
-      heroVideo.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-  };
-
-  window.addEventListener('scroll', update, { passive: true });
-}
-
 // ── SMOOTH SCROLL FOR NAV LINKS ───────────────────────────
 function initSmoothScroll() {
   document.querySelectorAll('.nav-center a[href^="#"]').forEach((link) => {
@@ -228,91 +213,25 @@ function initSmoothScroll() {
   });
 }
 
-// ── DEMO VIDEO PLACEHOLDER ────────────────────────────────
-function initDemoVideo() {
-  const prodFrame   = document.querySelector('.prod-frame');
-  const placeholder = prodFrame?.querySelector('.demo-placeholder');
-  const demoVideo   = prodFrame?.querySelector('video');
-
-  if (demoVideo && placeholder) {
-    placeholder.style.display = 'none';
-    demoVideo.addEventListener('error', () => {
-      demoVideo.style.display  = 'none';
-      placeholder.style.display = 'flex';
-    });
-    const src = demoVideo.querySelector('source')?.getAttribute('src');
-    if (!src) placeholder.style.display = 'flex';
-  }
-}
-
-// ── VIDEO AUTOPLAY FALLBACK ───────────────────────────────
-function initVideos() {
-  document.querySelectorAll('video')
-    .forEach(video => {
-      video.muted = true;
-      const p = video.play();
-      if (p !== undefined) {
-        p.catch(() => {
-          video.addEventListener(
-            'canplay',
-            () => video.play(),
-            { once: true }
-          );
-        });
-      }
-    });
-}
-
-function initLazyVideos() {
-  const lazy = document.querySelectorAll(
-    'video[preload="none"]'
-  );
-  if (!lazy.length) return;
-
-  const obs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const v = entry.target;
-        v.preload = 'auto';
-        v.load();
-        v.play().catch(() => {
-          v.muted = true;
-          v.play().catch(() => {});
-        });
-        obs.unobserve(v);
-      });
-    },
-    { rootMargin: '800px' }
-  );
-
-  lazy.forEach(v => obs.observe(v));
-}
-
-function initVisibility() {
-  document.addEventListener(
-    'visibilitychange', () => {
-      document.querySelectorAll('video')
-        .forEach(v => {
-          document.hidden
-            ? v.pause()
-            : v.play().catch(() => {});
-        });
+// ── IMAGE FADE-IN ─────────────────────────────────
+function initImageFadeIn() {
+  document.querySelectorAll('img').forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load',  () => img.classList.add('loaded'));
+      img.addEventListener('error', () => img.classList.add('loaded'));
     }
-  );
+  });
 }
 
 // ── INITIALISE ALL ────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  initVideos();
-  initLazyVideos();
-  initVisibility();
+  initImageFadeIn();
   initFeatureRows();
   initScrollAnimations();
   initCountUp();
   initNavScroll();
   initActiveNav();
-  initHeroParallax();
   initSmoothScroll();
-  initDemoVideo();
 });

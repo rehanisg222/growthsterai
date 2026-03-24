@@ -3,10 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="preconnect" href="https://3tyqozu2as.ucarecd.net" crossorigin>
-  <link rel="dns-prefetch" href="https://3tyqozu2as.ucarecd.net">
-  <link rel="preload" as="fetch" href="https://3tyqozu2as.ucarecd.net/befd28ff-6e5d-46c4-9905-81fbb837b894/"
-    crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="preload" as="image" href="/images/product-hero-mockup.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GrowthsterAI — AI-Powered Marketing Automation</title>
   <meta name="description"
@@ -48,12 +46,6 @@
   <!-- HERO                                                   -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <section id="hero" class="hero" aria-label="Hero section">
-    <div class="hero-video-layer">
-      <video id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="https://3tyqozu2as.ucarecd.net/befd28ff-6e5d-46c4-9905-81fbb837b894/" type="video/mp4" />
-      </video>
-    </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="eyebrow">Now in early access</p>
       <h1 class="hero-h1">
@@ -121,12 +113,8 @@
       generates creatives, and deploys campaigns — without a single briefing.
     </p>
     <div class="prod-frame" aria-label="Product demonstration" data-animate="scale" data-delay="3">
-      <video autoplay muted loop playsinline preload="none" aria-hidden="true">
-        <source src="https://3tyqozu2as.ucarecd.net/385176c6-7cb3-4dfa-99a3-186598183c0a/" type="video/mp4" />
-      </video>
-      <div class="demo-placeholder" aria-hidden="true">
-        <p class="demo-placeholder-title">Product demo video autoplays here</p>
-        <span class="demo-placeholder-sub">20s loop · brand analysis to live campaign</span>
+      <div class="prod-frame-placeholder" aria-hidden="true">
+        <span class="demo-placeholder-title">Full product demo — coming soon</span>
       </div>
     </div>
   </section>
@@ -140,8 +128,13 @@
       <p id="showcase-subtext" class="showcase-subtext" data-animate data-delay="1">The intelligence behind every
         campaign.</p>
     </div>
-    <img id="product-mockup" src="/images/product-hero-mockup.png" alt="GrowthsterAI analytics dashboard on MacBook Pro"
-      loading="lazy" data-animate="scale" data-delay="2" />
+    <div class="feat-img-wrap">
+      <img id="product-mockup" src="/images/product-hero-mockup.png"
+        alt="GrowthsterAI analytics dashboard on MacBook Pro"
+        loading="eager" fetchpriority="high" decoding="async"
+        width="1040" height="680"
+        data-animate="scale" data-delay="2" />
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -194,8 +187,10 @@
 
       <!-- Right: feature visualization -->
       <div class="feat-right" id="feat-panel" role="tabpanel">
-        <img id="feat-img" src="/images/feature-brand-intel.png" alt="Brand Intelligence visualization"
-          loading="lazy" />
+        <div class="feat-img-wrap" style="min-height:400px;">
+          <img id="feat-img" src="/images/feature-brand-intel.png" alt="Brand Intelligence visualization"
+            loading="lazy" decoding="async" width="600" height="600" />
+        </div>
         <div id="feat-placeholder" class="feat-placeholder">
           <span class="feat-placeholder-filename">feature-brand-intel.png</span>
         </div>
@@ -226,7 +221,8 @@
           </p>
         </div>
         <div class="process-step-img-wrap" data-animate="slide-right">
-          <img src="/images/step-1.png" alt="Paste your brand URL" class="process-step-img" loading="lazy" />
+          <img src="/images/step-1.png" alt="Paste your brand URL"
+            class="process-step-img" loading="lazy" decoding="async" width="800" height="600" />
         </div>
       </div>
 
@@ -241,7 +237,8 @@
           </p>
         </div>
         <div class="process-step-img-wrap" data-animate="slide-left">
-          <img src="/images/step-2.png" alt="Describe your campaign" class="process-step-img" loading="lazy" />
+          <img src="/images/step-2.png" alt="Describe your campaign"
+            class="process-step-img" loading="lazy" decoding="async" width="800" height="600" />
         </div>
       </div>
 
@@ -256,7 +253,8 @@
           </p>
         </div>
         <div class="process-step-img-wrap" data-animate="slide-right">
-          <img src="/images/step-3.png" alt="Deploy and track" class="process-step-img" loading="lazy" />
+          <img src="/images/step-3.png" alt="Deploy and track"
+            class="process-step-img" loading="lazy" decoding="async" width="800" height="600" />
         </div>
       </div>
 
@@ -294,9 +292,6 @@
   <!-- WAITLIST FORM                                          -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <section id="waitlist" class="waitlist-section" aria-labelledby="waitlist-heading">
-    <video id="cta-video" autoplay muted loop playsinline preload="none" aria-hidden="true" class="waitlist-bg-video">
-      <source src="https://3tyqozu2as.ucarecd.net/7f286113-9cf4-4802-81f0-1b2fb7a9a965/" type="video/mp4" />
-    </video>
     <div class="waitlist-overlay" aria-hidden="true"></div>
     <div class="waitlist-content">
       <div class="waitlist-head">

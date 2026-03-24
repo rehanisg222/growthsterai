@@ -72,12 +72,23 @@ button {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-video {
-  will-change: transform;
+img.loaded {
+  opacity: 1;
 }
+
+.feat-img-wrap {
+  background: #1a1a19;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
 
 .sr-only {
   position: absolute;
@@ -244,33 +255,10 @@ em.coral {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--bg);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
 }
 
-.hero-video-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
 
-.hero-video-layer video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(42, 42, 40, 0.38) 0%,
-    rgba(42, 42, 40, 0.65) 55%,
-    rgba(42, 42, 40, 1.00) 100%
-  );
-}
 
 .hero-content {
   position: relative;
@@ -406,7 +394,7 @@ section:not(#hero):not(.waitlist-section) {
 }
 
 /* ═══════════════════════════════════════════════════════════ */
-/* THE PLATFORM — PRODUCT DEMO VIDEO                          */
+/* THE PLATFORM — PRODUCT DEMO PLACEHOLDER                    */
 /* ═══════════════════════════════════════════════════════════ */
 .prod-frame {
   width: 100%;
@@ -417,24 +405,16 @@ section:not(#hero):not(.waitlist-section) {
   border-radius: 4px;
   overflow: hidden;
   position: relative;
-}
-
-.prod-frame video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.demo-placeholder {
-  position: absolute;
-  inset: 0;
-  display: none;
-  flex-direction: column;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  pointer-events: none;
+}
+
+.prod-frame-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
 .demo-placeholder-title {
@@ -443,13 +423,6 @@ section:not(#hero):not(.waitlist-section) {
   font-size: 17px;
   color: var(--t3);
   font-weight: 300;
-}
-
-.demo-placeholder-sub {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--t4);
-  letter-spacing: 0.06em;
 }
 
 /* ═══════════════════════════════════════════════════════════ */
@@ -771,15 +744,6 @@ section:not(#hero):not(.waitlist-section) {
   background-color: var(--bg);
 }
 
-.waitlist-bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  opacity: 0.65;
-}
 
 .waitlist-overlay {
   position: absolute;
